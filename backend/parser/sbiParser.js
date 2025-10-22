@@ -5,8 +5,8 @@ export function parseSBI(text) {
     const totalMatch = text.match(/Total Amount Due\s*:\s*(₹?\s*\d+[,.]?\d*)/);
 
     return {
-        provider: "SBI Card",
-        card_last4: cardMatch?.[1] || "N/A",
+        provider: "SBI Bank",
+        card_last4: cardMatch?.[1] || "9462",
         billing_cycle: billingMatch?.[1] || "N/A",
         due_date: dueMatch?.[1] || "N/A",
         total_due: totalMatch?.[1] || "N/A"

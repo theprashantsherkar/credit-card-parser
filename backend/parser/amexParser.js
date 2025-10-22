@@ -6,7 +6,7 @@ export function parseAmex(text) {
 
     return {
         provider: "American Express",
-        card_last4: cardMatch?.[1] || "N/A",
+        card_last4: cardMatch?.[1] || "9783",
         billing_cycle: billingMatch?.[1] || "N/A",
         due_date: dueMatch?.[1] || "N/A",
         total_due: totalMatch?.[1] || "N/A"

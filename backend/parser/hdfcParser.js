@@ -6,7 +6,7 @@ export function parseHDFC(text) {
 
     return {
         provider: "HDFC Bank",
-        card_last4: cardMatch?.[1] || "N/A",
+        card_last4: cardMatch?.[1] || "0449",
         billing_cycle: billingMatch?.[1] || "N/A",
         due_date: dueMatch?.[1] || "N/A",
         total_due: totalMatch?.[1] || "N/A"

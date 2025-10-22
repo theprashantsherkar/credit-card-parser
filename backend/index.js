@@ -1,10 +1,10 @@
-import express from "express";
-import multer from "multer";
-import pdf from "pdf-parse";
-import dotenv from 'dotenv';
-import fs from "fs";
+const express = require("express");
+const multer = require("multer");
+const pdfParse = require("pdf-parse"); 
+const dotenv = require('dotenv'); 
+const fs = require("fs");
 
-import { detectProvider, parseStatement } from "./parser/utils.js";
+const { detectProvider, parseStatement } = require("./parser/utils.js");
 
 
 dotenv.config({ path: './config.env' });
@@ -12,9 +12,18 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const upload = multer({ dest: "uploads/" });
 
+app.use(express.json());
+
+
+app.get('/', (req, res) => {
+    res.json({
+        message: "hello from backend"
+    })
+});
+
 app.post("/upload", upload.single("file"), async (req, res) => {
     const dataBuffer = fs.readFileSync(req.file.path);
-    const data = await pdf(dataBuffer);
+    const data = await pdfParse(dataBuffer);
     const text = data.text;
 
     const provider = detectProvider(text);
@@ -24,4 +33,6 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     res.json(extracted);
 });
 
-app.listen(PORT, () => console.log("Server running on port 4000"));
+
+
+app.listen(PORT, () => console.log("Server running on port ", PORT));
