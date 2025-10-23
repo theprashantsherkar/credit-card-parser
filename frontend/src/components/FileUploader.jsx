@@ -20,6 +20,8 @@ import {
     InsertDriveFile as FileIcon,
     Close as CloseIcon
 } from '@mui/icons-material';
+import axios from 'axios';
+import { backendURL } from './configURLs';
 
 // Create a simple theme for demonstration
 const theme = createTheme({
@@ -151,8 +153,16 @@ export function FileUploader({ onFilesSelected }) {
         return `${parseFloat((bytes / Math.pow(k, i)).toFixed(2))} ${sizes[i]}`;
     };
 
+    const handleFileUpload = async() => {
+        const response = await axios.post(`${backendURL}/upload`,
+            {
+                file: selectedFiles,
+            }
+        )
+    }
+
     return (
-        <Box>
+        <Box sx={{ width: '100%', maxWidth: 600, margin: '0 auto', display:"flex",flexDirection:'column', gap:2 }}>
             {/* Hidden file input */}
             <input
                 type="file"
@@ -242,6 +252,12 @@ export function FileUploader({ onFilesSelected }) {
                     </List>
                 </Box>
             )}
+            <button
+                className='hover:cursor-pointer px-10 py-2 bg-blue-600 text-white rounded-3xl hover:bg-blue-700 transition-all'
+                onClick={handleFileUpload}
+            >
+                Upload
+            </button>
         </Box>
     );
 }
