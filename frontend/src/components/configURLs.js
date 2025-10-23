@@ -1,2 +1,2 @@
-export const backendURL = 'http://localhost:8000' || 'http://localhost:4000'
+export const backendURL = 'https://bankingsystem-63sc.onrender.com/';
 
