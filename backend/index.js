@@ -3,8 +3,10 @@ const multer = require("multer");
 const pdfParse = require("pdf-parse"); 
 const dotenv = require('dotenv'); 
 const fs = require("fs");
+const cors = require('cors');
 
 const { detectProvider, parseStatement } = require("./parser/utils.js");
+
 
 
 dotenv.config({ path: './config.env' });
@@ -12,6 +14,9 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const upload = multer({ dest: "uploads/" });
 
+app.use(cors({
+    origin: "*"
+}))
 app.use(express.json());
 
 
