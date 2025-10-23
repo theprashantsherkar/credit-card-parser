@@ -1,2 +1,2 @@
-export const backendURL = 'https://bankingsystem-63sc.onrender.com/';
+export const backendURL = 'https://bankingsystem-63sc.onrender.com';
 
