@@ -48,7 +48,7 @@ function Content() {
             </div>
 
             {cardDetails && (
-                <div className="p-5 bg-amber-200 border border-black rounded-lg">
+                <div className="p-5 bg-blue-300 border border-black rounded-lg">
                     <div>Provider: {cardDetails.provider}</div>
                     <div>Last 4 digits: {cardDetails.card_last4}</div>
                     <div>Billing cycle: {cardDetails.billing_cycle}</div>
