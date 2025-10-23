@@ -14,9 +14,16 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const upload = multer({ dest: "uploads/" });
 
-app.use(cors({
-    origin: "*"
-}))
+app.use(
+    cors({
+        origin: ["https://credit-card-assessment.vercel.app"], 
+        methods: ["GET", "POST", "OPTIONS"],
+        allowedHeaders: ["Content-Type", "Authorization"],
+    })
+);
+
+app.options("*", cors());
+
 app.use(express.json());
 
 
